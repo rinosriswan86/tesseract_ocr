@@ -9,8 +9,8 @@ import 'package:path/path.dart';
 
 class TesseractOcr {
  
-  static const Directory directory = await getApplicationDocumentsDirectory();
-  static const String TESS_DATA_PATH = '${directory.path}/assets/tessdata';
+  static const String appDirect = '/data/user/0/jp.co.aritmobile.billpal.application/app_flutter';
+  static const String TESS_DATA_PATH = '$appDirect/assets/tessdata';
   static const String TESS_DATA_CONFIG = 'assets/tessdata_config.json';
   static const MethodChannel _channel = const MethodChannel('tesseract_ocr');
 
