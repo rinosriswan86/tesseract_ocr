@@ -8,8 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 class TesseractOcr {
-  static const String TESS_DATA_CONFIG = 'assets/tessdata_config.json';
-  static const String TESS_DATA_PATH = 'assets/tessdata';
+  static const String TESS_DATA_CONFIG = 'data/user/0/jp.co.aritmobile.billpal.application/app_flutter/assets/tessdata_config.json';
+  static const String TESS_DATA_PATH = 'data/user/0/jp.co.aritmobile.billpal.application/app_flutter/assets/tessdata';
   static const MethodChannel _channel = const MethodChannel('tesseract_ocr');
 
   static Future<String> extractText(String imagePath, {String language}) async {
