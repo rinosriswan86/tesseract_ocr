@@ -8,7 +8,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 class TesseractOcr {
-  static const String TESS_DATA_PATH = 'assets/tessdata';
+  static const String appDirect = '/data/user/0/jp.co.aritmobile.billpal.application/app_flutter';
+  static const String TESS_DATA_PATH = '$appDirect/assets/tessdata';
   static const String TESS_DATA_CONFIG = 'assets/tessdata_config.json';
   static const MethodChannel _channel = const MethodChannel('tesseract_ocr');
 
@@ -35,12 +36,11 @@ class TesseractOcr {
   }
 
   static Future _copyTessDataToAppDocumentsDirectory(String tessdataDirectory) async {
-    final Directory appDirectory = await getApplicationDocumentsDirectory();
     final String config = await rootBundle.loadString(TESS_DATA_CONFIG);
     Map<String, dynamic> files = jsonDecode(config);
     for (var file in files["files"]) {
       if (!await File('$tessdataDirectory/$file').exists()) {
-        final ByteData data = await rootBundle.load('${appDirectory.path}/$TESS_DATA_PATH/$file');
+        final ByteData data = await rootBundle.load('$TESS_DATA_PATH/$file');
         final Uint8List bytes = data.buffer.asUint8List(
           data.offsetInBytes,
           data.lengthInBytes,
